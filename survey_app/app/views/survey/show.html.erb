@@ -1,0 +1,22 @@
+
+<h1>Create question for <%= @survey.title %> </h1></br>
+<%= form_tag({:controller => 'question',:action => 'create'}) do %>
+Title <%= text_field_tag "question[title]"%>
+  <%=hidden_field_tag "question[survey_id]",  @survey.id%>
+<%= submit_tag "Create" %>
+<%end%>
+</br>
+<table>
+	<% num = 1%>
+	<% @questions.each do |ques|%>
+	<tr>
+		<%= num.to_s+ ". "+ ques.title%>  <%= link_to "Destroy", question_path(:id => ques.id,:survey_id => ques.survey.id),:method => :delete, :data => {:confirm => "Are you Sure?"}%>
+	</tr></br>
+	<tr>
+		
+	</tr></br>
+	<% num += 1%>
+	
+	<%end%>
+	
+</table>

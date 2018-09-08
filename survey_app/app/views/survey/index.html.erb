@@ -1,0 +1,25 @@
+<h1>Survey List</h1>
+<div>
+	<%= form_tag({:action => 'create'}) do %>
+	Title <%= text_field_tag "survey[title]" %>
+		<%= submit_tag 'Add survey'%>
+	<%end%>
+</div>
+<div>
+	<table >
+		<tr>
+			<th>Title</th>
+			<th>Response</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<%@list_survey.each do |survey|%>
+		<tr><td><%= link_to "#{survey.title}",survey_path(survey) %></td>
+			<td><%= link_to survey.survey_responses.size,user_response_survey_path(survey) %></td>
+			<td><%= link_to "Edit",edit_survey_path(survey) %></td>
+			<td><%=link_to 'Destroy', survey, :method => :delete, :data => {:confirm => "Are you Sure?"}%></td></tr>
+		<%end%>
+	</table>
+
+</div>

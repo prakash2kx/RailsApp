@@ -1,0 +1,22 @@
+<h1>User Responses of Survey</h1>
+<%@surveys.each do |survey|%>
+<%= form_tag({:action => 'create'},id: "form_#{survey.id}") do %>
+<table>
+	<% num = 1%>
+	<% survey.questions && survey.questions.each do |ques|%>
+	<tr>
+		<%= num.to_s+ ". "+ ques.title%>  
+	</tr></br>
+	<tr>
+		<%= text_field_tag  "answer[#{ques.id}]" %>
+	</tr></br>
+	<% num += 1%>
+
+	<%end%>
+	<%= hidden_field_tag "survey_response[survey_id]", survey.id %>
+	<% if  survey.questions.size > 0 %>
+	<%= submit_tag "Submit" %>
+	<%end%>
+</table>
+<%end%>
+<%end%>

@@ -1,0 +1,12 @@
+<% @survey_response.each do |sr|%>
+ <h3><%= "Responed by #{sr.user.name} for the survey #{sr.survey.title}"%></h3></br>
+ <% num = 1%>
+ <% sr.answers.each do |ans|%>
+ <%= num.to_s + ". " + ans.question.title %></br>
+ <%= text_field_tag "", ans.title, :readonly => true %></br>
+   <% num += 1%>
+ <%end%>
+<%end%>
+<% if @survey_response.size.eql?(0)%>
+<h3>There is no response for this survey</h3>
+	<%end%>

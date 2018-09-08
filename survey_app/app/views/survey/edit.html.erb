@@ -1,0 +1,6 @@
+<h1><%= "Survey Updation" %></h1>
+<%= form_tag survey_path(@edit_survey), method: :put do |f| %>
+<%= "Title"%></br>
+<%= text_field_tag "survey[title]", @edit_survey.title%>
+<%= submit_tag "Update"%>
+<%end%>

@@ -1,0 +1,6 @@
+<h1>Create question for <%= @survey.title %> </h1>
+<%= form_tag({:action => 'create'}) do %>
+Title <%= text_field_tag "question[title]"%>
+  <%=hidden_field_tag "question[survey_id]",  @survey.id%>
+<%= submit_tag "Create" %>
+<%end%>
